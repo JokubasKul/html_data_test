@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <meta charset="UTF-8">
+        <link rel="stylesheet" href="@/static/style.css">
+        <title>Games</title>
+    </head>
+
+    <body>
+
+        <h1>Games</h1>
+
+        <table>
+            <thead>
+                <tr>
+                    <th>Id</th>
+                    <th>Title</th>
+                    <th>Genre</th>
+                    <th>Release year</th>
+                </tr>
+            </thead>
+
+            <tbody>
+                <tr th:each="game : ${games}">
+                    <td th:text="${game.getGameId}"></td>
+                    <td th:text="${game.getTitle}"></td>
+                    <td th:text="${game.getGenre}"></td>
+                    <td th:text="${game.getReleaseYear}"></td>
+                </tr>
+            </tbody>
+        </table>
+
+    </body>
+</html>
