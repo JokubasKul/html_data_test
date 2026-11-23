@@ -6,6 +6,7 @@ import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 
 import java.sql.SQLException;
 import java.util.List;
@@ -22,6 +23,15 @@ public class GameController {
     public String getAllGames(Model model) throws SQLException{
 
         List<Game> games = gameDatabase.getAllGames();
+
+        model.addAttribute("games", games);
+
+        return "games";
+    }
+
+    @GetMapping("/games/{game_id}")
+    public String getGame(@PathVariable int game_id, Model model) throws SQLException {
+        List<Game> games = gameDatabase.getGame(game_id);
 
         model.addAttribute("games", games);
 

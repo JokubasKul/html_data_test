@@ -2,7 +2,7 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
     <head>
         <meta charset="UTF-8">
-        <link rel="stylesheet" href="@/static/style.css">
+        <link rel="stylesheet" th:href="@{/style.css}">
         <title>Games</title>
     </head>
 
@@ -22,7 +22,7 @@
 
             <tbody>
                 <tr th:each="game : ${games}">
-                    <td th:text="${game.getGameId}"></td>
+                    <td class="id" th:text="${game.getGameId}"></td>
                     <td th:text="${game.getTitle}"></td>
                     <td th:text="${game.getGenre}"></td>
                     <td th:text="${game.getReleaseYear}"></td>

@@ -17,6 +17,7 @@ public class GamesApplication implements CommandLineRunner {
 
     public static void main(String[] args) {
         SpringApplication.run(GamesApplication.class, args);
+        System.out.println("Application running http://localhost:8090/games");
     }
 
     @Override

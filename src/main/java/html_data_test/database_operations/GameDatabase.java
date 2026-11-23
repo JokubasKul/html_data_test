@@ -36,4 +36,33 @@ public class GameDatabase {
         }
         return games;
     }
+
+    public List<Game> getGame(int game_id) throws SQLException{
+
+        List<Game> games = new ArrayList<>();
+
+        String sql = "SELECT * FROM games WHERE game_id = ?";
+
+        try(Connection connection = DatabaseConnection.connect();
+        PreparedStatement statement = connection.prepareStatement(sql)){
+
+            statement.setInt(1, game_id);
+
+            try(ResultSet result = statement.executeQuery()){
+
+                while(result.next()){
+                    Game game = new Game(
+                            result.getInt("game_id"),
+                            result.getString("title"),
+                            result.getString("genre"),
+                            result.getInt("release_year")
+                    );
+
+                    games.add(game);
+                }
+            }
+        }
+        return games;
+    }
+
 }
